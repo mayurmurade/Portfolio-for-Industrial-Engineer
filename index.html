@@ -1,485 +1,695 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mayur Murade - Strategic Program Manager Portfolio</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayur Murade | Strategic Program Manager Portfolio</title>
+    <meta name="description" content="Portfolio of Mayur Murade - Program Manager specializing in Strategic Sourcing & Supply Chain in the Automotive sector.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* Custom Styles for Chart Containers */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
-        }
-        
-        @media (max-width: 640px) {
-            .chart-container {
-                height: 300px;
-            }
-        }
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F9FAFB;
-            color: #1F2937;
-        }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
+    <style>
+        /* Custom Utilities */
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+        
+        @media (max-width: 640px) {
+            .chart-wrapper {
+                height: 300px;
+            }
+        }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        /* Timeline Line Adjustment */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #E5E7EB;
+            transform: translateX(-50%);
+        }
 
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #E5E7EB;
-            transform: translateX(-50%);
-        }
-
-        @media (max-width: 768px) {
-            .timeline-line {
-                left: 20px;
-            }
-        }
-        /* REMOVED: .editable-active styles */
-        /* REMOVED: #editor-toolbar styles */
-    </style>
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 2rem;
+                transform: translateX(0);
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-slate-800">
+<body class="bg-gray-50 text-slate-800 antialiased selection:bg-brand-100 selection:text-brand-900">
 
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="text-xl font-bold font-serif text-teal-700 tracking-tight">MM</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#hero" class="text-gray-600 hover:text-teal-600 font-medium transition">Overview</a>
-                    <a href="#impact" class="text-gray-600 hover:text-teal-600 font-medium transition">Impact Metrics</a>
-                    <a href="#competencies" class="text-gray-600 hover:text-teal-600 font-medium transition">Competencies</a>
-                    <a href="#experience" class="text-gray-600 hover:text-teal-600 font-medium transition">Experience</a>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-teal-600 focus:outline-none">
-                        ☰
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 p-4 space-y-2 shadow-lg">
-            <a href="#hero" class="block text-gray-600 hover:text-teal-600">Overview</a>
-            <a href="#impact" class="block text-gray-600 hover:text-teal-600">Impact Metrics</a>
-            <a href="#competencies" class="block text-gray-600 hover:text-teal-600">Competencies</a>
-            <a href="#experience" class="block text-gray-600 hover:text-teal-600">Experience</a>
-        </div>
-    </nav>
-
-    <section id="hero" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div class="max-w-5xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-                Mayur Murade
-            </h1>
-            <h2 class="text-xl md:text-2xl text-teal-700 font-medium mb-8">
-                Program Manager | Strategic Sourcing & Supply Chain
-            </h2>
-            <p class="max-w-3xl mx-auto text-lg text-slate-600 mb-10 leading-relaxed">
-                Strategic and purpose-led Engineer professional with over 7.8 years of experience leading complex, multi-disciplinary projects within the automotive sector. Proven expertise in driving cross-functional initiatives from concept to SOP readiness while enhancing cost, quality, and capacity.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="mailto:mayurmurade@gmail.com" class="bg-teal-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-teal-800 transition shadow-lg transform hover:-translate-y-1">
-                    Contact Me
-                </a>
-                
-                <a href="https://github.com/YourUsername/YourRepoName/archive/refs/heads/main.zip" 
-                   class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg transform hover:-translate-y-1">
-                    Download Code (ZIP)
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <a href="#" class="group flex items-center gap-2">
+                    <div class="bg-brand-600 text-white w-10 h-10 flex items-center justify-center rounded-lg font-serif font-bold text-xl shadow-md group-hover:bg-brand-700 transition">MM</div>
+                    <span class="font-serif font-bold text-slate-800 text-lg hidden sm:block group-hover:text-brand-700 transition">Mayur Murade</span>
                 </a>
-                                <button onclick="document.getElementById('experience').scrollIntoView()" class="bg-white text-teal-700 border border-teal-200 px-8 py-3 rounded-full font-semibold hover:bg-teal-50 transition shadow-sm">
-                    View Experience
-                </button>
-            </div>
-            <div class="mt-8 flex justify-center space-x-6 text-sm text-slate-500">
-                <span>📍 Pune, India</span>
-                <span>📱 (+91) 9970628154</span>
-            </div>
-        </div>
-    </section>
 
-    <section id="impact" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Quantitative Impact</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto">
-                    A data-driven approach to operations. This section visualizes key efficiency improvements and cost reductions achieved across various tenures, highlighting the tangible value delivered.
-                </p>
-            </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#overview" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-brand-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Overview</a>
+                    <a href="#impact" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-brand-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Impact</a>
+                    <a href="#competencies" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-brand-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Competencies</a>
+                    <a href="#experience" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-brand-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Journey</a>
+                    <a href="mailto:mayurmurade@gmail.com" class="px-5 py-2.5 rounded-full bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Contact</a>
+                </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-teal-500 shadow-sm hover:shadow-md transition">
-                        <h3 class="font-bold text-xl text-slate-800 mb-2">Efficiency Improvements</h3>
-                        <p class="text-slate-600 mb-2">Optimization of production lines and storage layouts using Lean/IE tools.</p>
-                        <ul class="list-disc ml-5 text-sm text-slate-500 space-y-1">
-                            <li><strong>18%</strong> Reduction in Takt Time (Ather Energy)</li>
-                            <li><strong>30%</strong> Improvement in Storage Efficiency (Ather Energy)</li>
-                            <li><strong>12%</strong> Increase in Throughput (Varroc)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm hover:shadow-md transition">
-                        <h3 class="font-bold text-xl text-slate-800 mb-2">Process Optimization</h3>
-                        <p class="text-slate-600 mb-2">Waste reduction and inventory management through JIT/Kanban.</p>
-                        <ul class="list-disc ml-5 text-sm text-slate-500 space-y-1">
-                            <li><strong>25%</strong> Waste Reduction (Varroc)</li>
-                            <li><strong>75%</strong> Lot Size Reduction (Denso)</li>
-                            <li><strong>40%</strong> Ergonomic Risk Reduction (Denso)</li>
-                        </ul>
-                    </div>
-                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-brand-600 hover:bg-gray-100 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center justify-center">
-                    <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-6">Performance Metrics Visualization</h4>
-                    <div class="chart-container">
-                        <canvas id="impactChart"></canvas>
-                    </div>
-                    <p class="mt-4 text-xs text-center text-gray-400">Values represent percentage improvements relative to baseline.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#overview" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-brand-600 hover:bg-gray-50 rounded-md">Overview</a>
+                <a href="#impact" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-brand-600 hover:bg-gray-50 rounded-md">Impact</a>
+                <a href="#competencies" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-brand-600 hover:bg-gray-50 rounded-md">Competencies</a>
+                <a href="#experience" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-brand-600 hover:bg-gray-50 rounded-md">Experience</a>
+                <div class="pt-4 mt-2 border-t border-gray-100">
+                    <a href="mailto:mayurmurade@gmail.com" class="block w-full text-center px-4 py-3 bg-brand-600 text-white font-medium rounded-lg hover:bg-brand-700">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <section id="competencies" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                <div class="order-2 lg:order-1 flex flex-col items-center">
-                    <div class="w-full bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                        <h4 class="text-center font-bold text-slate-800 mb-4">Skill Proficiency Model</h4>
-                        <div class="chart-container">
-                            <canvas id="skillsChart"></canvas>
-                        </div>
-                    </div>
-                </div>
+    <main>
+        <!-- Hero Section -->
+        <section id="overview" class="pt-32 pb-20 lg:pt-40 lg:pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-brand-50 via-white to-white overflow-hidden relative">
+            <!-- Background Decorative Elements -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div class="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] bg-brand-100/50 rounded-full blur-3xl opacity-60"></div>
+                <div class="absolute top-[20%] -left-[10%] w-[30%] h-[30%] bg-blue-100/50 rounded-full blur-3xl opacity-60"></div>
+            </div>
 
-                <div class="order-1 lg:order-2">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Core Competencies</h2>
-                    <p class="text-slate-600 mb-8">
-                        A multidisciplinary skillset bridging the gap between strategic planning and operational execution. Expertise spans across technical systems, lean methodologies, and supply chain management.
-                    </p>
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-brand-100 shadow-sm text-brand-700 text-xs font-semibold uppercase tracking-wider mb-8 animate-fade-in-up">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    Available for Opportunities
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold font-serif text-slate-900 mb-6 leading-tight tracking-tight">
+                    Mayur Murade
+                </h1>
+                <h2 class="text-xl md:text-2xl text-slate-500 font-medium mb-8 max-w-2xl mx-auto">
+                    Program Manager <span class="text-brand-600 mx-2">•</span> Strategic Sourcing <span class="text-brand-600 mx-2">•</span> Supply Chain
+                </h2>
+                
+                <p class="max-w-3xl mx-auto text-lg text-slate-600 mb-10 leading-relaxed">
+                    Strategic and purpose-led Engineer professional with over <span class="font-semibold text-slate-900">7.8 years</span> of experience leading complex, multi-disciplinary projects within the automotive sector. Proven expertise in driving cross-functional initiatives from concept to SOP readiness while enhancing cost, quality, and capacity.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="mailto:mayurmurade@gmail.com" class="inline-flex items-center justify-center gap-2 bg-brand-700 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-brand-800 transition shadow-lg hover:shadow-brand-500/30 transform hover:-translate-y-1">
+                        <i data-lucide="mail" class="w-4 h-4"></i> Contact Me
+                    </a>
+                    
+                    <a href="#impact" class="inline-flex items-center justify-center gap-2 bg-white text-slate-700 border border-gray-200 px-8 py-3.5 rounded-full font-semibold hover:bg-gray-50 hover:border-brand-200 hover:text-brand-700 transition shadow-sm hover:shadow-md transform hover:-translate-y-1">
+                        View Metrics <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                </div>
 
-                    <div class="space-y-6">
-                        <div class="bg-white rounded-lg shadow-sm overflow-hidden group cursor-pointer transition" onclick="toggleAccordion('acc-1')">
-                            <div class="p-4 bg-white hover:bg-gray-50 flex justify-between items-center border-b border-gray-100">
-                                <h3 class="font-bold text-teal-800">Planning & Sourcing</h3>
-                                <span class="text-teal-600 text-xl font-bold">+</span>
-                            </div>
-                            <div id="acc-1" class="hidden p-4 bg-gray-50 text-slate-600 text-sm">
-                                Demand/Supply Planning, Materials Requirement Planning (MRP), Supply Chain & Inventory Control (JIT, Kanban), Strategic Sourcing & Negotiation, Vendor Development.
-                            </div>
-                        </div>
+                <div class="mt-12 flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-500">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-brand-600"></i> Pune, India
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4 text-brand-600"></i> (+91) 9970628154
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="linkedin" class="w-4 h-4 text-brand-600"></i> linkedin.com/in/mayurmurade
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <div class="bg-white rounded-lg shadow-sm overflow-hidden group cursor-pointer transition" onclick="toggleAccordion('acc-2')">
-                            <div class="p-4 bg-white hover:bg-gray-50 flex justify-between items-center border-b border-gray-100">
-                                <h3 class="font-bold text-teal-800">Systems & Analytics</h3>
-                                <span class="text-teal-600 text-xl font-bold">+</span>
-                            </div>
-                            <div id="acc-2" class="hidden p-4 bg-gray-50 text-slate-600 text-sm">
-                                Spend Analytics & Data Modeling, Power BI, Spreadsheets, SQL, Process Simulation (DES), AutoCAD.
-                            </div>
-                        </div>
+        <!-- Impact Section -->
+        <section id="impact" class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">Quantitative Impact</h2>
+                    <div class="w-20 h-1 bg-brand-500 mx-auto rounded-full mb-6"></div>
+                    <p class="text-slate-600 max-w-2xl mx-auto text-lg">
+                        A data-driven approach to operations. Visualizing key efficiency improvements and cost reductions achieved across various tenures.
+                    </p>
+                </div>
 
-                        <div class="bg-white rounded-lg shadow-sm overflow-hidden group cursor-pointer transition" onclick="toggleAccordion('acc-3')">
-                            <div class="p-4 bg-white hover:bg-gray-50 flex justify-between items-center border-b border-gray-100">
-                                <h3 class="font-bold text-teal-800">Lean / IE Tools</h3>
-                                <span class="text-teal-600 text-xl font-bold">+</span>
-                            </div>
-                            <div id="acc-3" class="hidden p-4 bg-gray-50 text-slate-600 text-sm">
-                                Lean Manufacturing (VSM, Kaizen), Time Standards & Motion Studies (MOST, REBA), Six Sigma, SMED, 5S.
-                            </div>
-                        </div>
-                         <div class="bg-white rounded-lg shadow-sm overflow-hidden group cursor-pointer transition" onclick="toggleAccordion('acc-4')">
-                            <div class="p-4 bg-white hover:bg-gray-50 flex justify-between items-center border-b border-gray-100">
-                                <h3 class="font-bold text-teal-800">Program Management</h3>
-                                <span class="text-teal-600 text-xl font-bold">+</span>
-                            </div>
-                            <div id="acc-4" class="hidden p-4 bg-gray-50 text-slate-600 text-sm">
-                                Cross-functional Program Leadership, SOP Readiness, Timeline Adherence, Stakeholder Management.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <!-- Text Metrics -->
+                    <div class="space-y-6">
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-brand-200 transition duration-300 group">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="p-2 bg-brand-100 text-brand-700 rounded-lg group-hover:bg-brand-600 group-hover:text-white transition">
+                                    <i data-lucide="trending-up" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="font-bold text-xl text-slate-800">Efficiency Improvements</h3>
+                            </div>
+                            <p class="text-slate-600 mb-4">Optimization of production lines and storage layouts using Lean/IE tools.</p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center text-slate-600 text-sm">
+                                    <span class="font-bold text-brand-600 w-12 text-right mr-3">18%</span> Reduction in Takt Time (Ather)
+                                </li>
+                                <li class="flex items-center text-slate-600 text-sm">
+                                    <span class="font-bold text-brand-600 w-12 text-right mr-3">30%</span> Improvement in Storage Eff. (Ather)
+                                </li>
+                                <li class="flex items-center text-slate-600 text-sm">
+                                    <span class="font-bold text-brand-600 w-12 text-right mr-3">12%</span> Increase in Throughput (Varroc)
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-blue-200 transition duration-300 group">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="p-2 bg-blue-100 text-blue-700 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition">
+                                    <i data-lucide="settings" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="font-bold text-xl text-slate-800">Process Optimization</h3>
+                            </div>
+                            <p class="text-slate-600 mb-4">Waste reduction and inventory management through JIT/Kanban.</p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center text-slate-600 text-sm">
+                                    <span class="font-bold text-blue-600 w-12 text-right mr-3">25%</span> Waste Reduction (Varroc)
+                                </li>
+                                <li class="flex items-center text-slate-600 text-sm">
+                                    <span class="font-bold text-blue-600 w-12 text-right mr-3">75%</span> Lot Size Reduction (Denso)
+                                </li>
+                                <li class="flex items-center text-slate-600 text-sm">
+                                    <span class="font-bold text-blue-600 w-12 text-right mr-3">40%</span> Ergonomic Risk Reduction (Denso)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-    <section id="experience" class="py-20 bg-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900">Professional Journey</h2>
-                <p class="text-slate-500 mt-2">A timeline of increasing responsibility and impact.</p>
-            </div>
+                    <!-- Chart -->
+                    <div class="bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-slate-100">
+                        <div class="flex justify-between items-end mb-6">
+                            <h4 class="font-bold text-slate-800">Performance Metrics</h4>
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Rel. to Baseline</span>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="impactChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <div class="relative">
-                <div class="timeline-line hidden md:block"></div>
+        <!-- Competencies Section -->
+        <section id="competencies" class="py-24 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                    
+                    <!-- Radar Chart -->
+                    <div class="order-2 lg:order-1 flex flex-col items-center">
+                        <div class="w-full bg-white p-8 rounded-3xl shadow-lg border border-slate-100">
+                            <h4 class="text-center font-bold text-slate-800 mb-6 text-lg">Skill Proficiency Model</h4>
+                            <div class="chart-wrapper">
+                                <canvas id="skillsChart"></canvas>
+                            </div>
+                        </div>
+                        <!-- Tech Stack Tags -->
+                        <div class="mt-8 flex flex-wrap justify-center gap-2">
+                            <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-500">Power BI</span>
+                            <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-500">SQL</span>
+                            <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-500">AutoCAD</span>
+                            <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-500">SAP</span>
+                            <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-500">JIT/Kanban</span>
+                        </div>
+                    </div>
 
-                <div class="space-y-12" id="timeline-container">
-                    <div class="flex flex-col md:flex-row items-center w-full group">
-                        <div class="w-full md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-12">
-                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 inline-block w-full hover:border-teal-200 transition">
-                                <span class="text-teal-600 font-bold text-sm tracking-wide uppercase block mb-1">June 2024 – Present</span>
-                                <h3 class="font-bold text-lg text-slate-800">Assistant Manager</h3>
-                                <h4 class="text-slate-500 font-medium">Ather Energy Limited</h4>
-                                <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
-                                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded-md">Program Management</span>
-                                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded-md">Power BI</span>
-                                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded-md">Logistics</span>
-                                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded-md">DES</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="z-10 flex items-center justify-center w-8 h-8 bg-teal-600 rounded-full ring-4 ring-white shadow-md flex-shrink-0">
-                            <span class="text-white font-bold text-xs">3</span>
-                        </div>
-                        <div class="w-full md:w-5/12 md:pl-12 mt-4 md:mt-0">
-                            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-teal-600 hover:shadow-lg transition-shadow duration-300">
-                                <ul class="space-y-3 text-sm text-slate-600 leading-relaxed">
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Program Management:</strong> Oversaw end-to-end implementation of production line setup, ensuring SOP readiness.</span></li>
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Demand & Capacity Optimization:</strong> Achieved an 18% reduction in takt time for the Battery Assembly Line through time-motion studies.</span></li>
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Data & Digitalization:</strong> Designed an interactive Power BI dashboard to monitor real-time production costs.</span></li>
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Logistics & Layout:</strong> Reorganized layout achieving a 30% improvement in storage efficiency.</span></li>
-                                </ul>
-                            </div>
-                    </div>
+                    <!-- Accordion Content -->
+                    <div class="order-1 lg:order-2">
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">Core Competencies</h2>
+                        <p class="text-slate-600 mb-10 text-lg leading-relaxed">
+                            A multidisciplinary skillset bridging the gap between strategic planning and operational execution. Expertise spans across technical systems, lean methodologies, and supply chain management.
+                        </p>
 
-                    <div class="flex flex-col md:flex-row-reverse items-center w-full group">
-                        <div class="w-full md:w-5/12 md:text-left mb-4 md:mb-0 md:pl-12">
-                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 inline-block w-full hover:border-teal-200 transition">
-                                <span class="text-teal-600 font-bold text-sm tracking-wide uppercase block mb-1">May 2021 – May 2024</span>
-                                <h3 class="font-bold text-lg text-slate-800">Assistant Manager</h3>
-                                <h4 class="text-slate-500 font-medium">Varroc Engineering Limited</h4>
-                                <div class="mt-3 flex flex-wrap gap-2 md:justify-start">
-                                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded-md">Strategic Sourcing</span>
-                                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded-md">Kaizen</span>
-                                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded-md">Cost Control</span>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="z-10 flex items-center justify-center w-8 h-8 bg-teal-600 rounded-full ring-4 ring-white shadow-md flex-shrink-0">
-                            <span class="text-white font-bold text-xs">2</span>
-                        </div>
-                        <div class="w-full md:w-5/12 md:pr-12 mt-4 md:mt-0">
-                            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-teal-600 hover:shadow-lg transition-shadow duration-300">
-                                <ul class="space-y-3 text-sm text-slate-600 leading-relaxed">
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Strategic Sourcing:</strong> Executed RFQ/PO processes achieving a 2 lakh INR cost reduction.</span></li>
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Process Improvement:</strong> Applied lean tools (Kaizen, SMED) reducing waste by 25% and increasing throughput by 12%.</span></li>
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Demand/Supply Planning:</strong> Estimated labor/equipment requirements based on demand forecasts using simulation.</span></li>
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Materials Management:</strong> Utilized MOST analysis to reduce SMT assembly line cycle times.</span></li>
-                                </ul>
-                            </div>
-                    </div>
-                    </div>
+                        <div class="space-y-4">
+                            <!-- Accordion Item 1 -->
+                            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden group">
+                                <button class="w-full p-5 text-left bg-white hover:bg-slate-50 flex justify-between items-center transition focus:outline-none" onclick="toggleAccordion('acc-1')">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="shopping-cart" class="w-5 h-5 text-brand-600"></i>
+                                        <h3 class="font-bold text-slate-800">Planning & Sourcing</h3>
+                                    </div>
+                                    <span id="icon-acc-1" class="text-slate-400 text-2xl font-light leading-none transition-transform duration-300">+</span>
+                                </button>
+                                <div id="acc-1" class="hidden p-5 pt-0 bg-slate-50 border-t border-slate-100 text-slate-600 text-sm leading-relaxed">
+                                    <div class="mt-3">
+                                        Demand/Supply Planning, Materials Requirement Planning (MRP), Supply Chain & Inventory Control (JIT, Kanban), Strategic Sourcing & Negotiation, Vendor Development.
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="flex flex-col md:flex-row items-center w-full group">
-                        <div class="w-full md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-12">
-                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 inline-block w-full hover:border-teal-200 transition">
-                                <span class="text-teal-600 font-bold text-sm tracking-wide uppercase block mb-1">Aug 2017 – May 2021</span>
-                                <h3 class="font-bold text-lg text-slate-800">Senior Engineer</h3>
-                                <h4 class="text-slate-500 font-medium">Denso Haryana Private Limited</h4>
-                                <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
-                                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded-md">JIT/Kanban</span>
-                                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded-md">IoT</span>
-                                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded-md">Ergonomics</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="z-10 flex items-center justify-center w-8 h-8 bg-teal-600 rounded-full ring-4 ring-white shadow-md flex-shrink-0">
-                            <span class="text-white font-bold text-xs">1</span>
-                        </div>
-                        <div class="w-full md:w-5/12 md:pl-12 mt-4 md:mt-0">
-                            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-teal-600 hover:shadow-lg transition-shadow duration-300">
-                                <ul class="space-y-3 text-sm text-slate-600 leading-relaxed">
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Inventory Management:</strong> Reduced lot sizes by 75% through Kanban, improving delivery efficiency.</span></li>
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Automation:</strong> Deployed Plant Control System with IoT sensors for real-time die-casting data.</span></li>
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Ergonomics:</strong> Conducted REBA analysis reducing ergonomic risks by 40%.</span></li>
-                                    <li class="flex items-start"><span class="mr-2 text-teal-500 mt-1">▪</span><span><strong>Cost Reduction:</strong> Drove strategies through productivity Kaizen.</span></li>
-                                </ul>
-                            </div>
-                    </div>
-                    </div>
+                            <!-- Accordion Item 2 -->
+                            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden group">
+                                <button class="w-full p-5 text-left bg-white hover:bg-slate-50 flex justify-between items-center transition focus:outline-none" onclick="toggleAccordion('acc-2')">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="bar-chart-2" class="w-5 h-5 text-brand-600"></i>
+                                        <h3 class="font-bold text-slate-800">Systems & Analytics</h3>
+                                    </div>
+                                    <span id="icon-acc-2" class="text-slate-400 text-2xl font-light leading-none transition-transform duration-300">+</span>
+                                </button>
+                                <div id="acc-2" class="hidden p-5 pt-0 bg-slate-50 border-t border-slate-100 text-slate-600 text-sm leading-relaxed">
+                                    <div class="mt-3">
+                                        Spend Analytics & Data Modeling, Power BI, Spreadsheets, SQL, Process Simulation (DES), AutoCAD.
+                                    </div>
+                                </div>
+                            </div>
 
-                </div>
-            </div>
-        </div>
-    </section>
+                            <!-- Accordion Item 3 -->
+                            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden group">
+                                <button class="w-full p-5 text-left bg-white hover:bg-slate-50 flex justify-between items-center transition focus:outline-none" onclick="toggleAccordion('acc-3')">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="zap" class="w-5 h-5 text-brand-600"></i>
+                                        <h3 class="font-bold text-slate-800">Lean / IE Tools</h3>
+                                    </div>
+                                    <span id="icon-acc-3" class="text-slate-400 text-2xl font-light leading-none transition-transform duration-300">+</span>
+                                </button>
+                                <div id="acc-3" class="hidden p-5 pt-0 bg-slate-50 border-t border-slate-100 text-slate-600 text-sm leading-relaxed">
+                                    <div class="mt-3">
+                                        Lean Manufacturing (VSM, Kaizen), Time Standards & Motion Studies (MOST, REBA), Six Sigma, SMED, 5S.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Accordion Item 4 -->
+                            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden group">
+                                <button class="w-full p-5 text-left bg-white hover:bg-slate-50 flex justify-between items-center transition focus:outline-none" onclick="toggleAccordion('acc-4')">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="briefcase" class="w-5 h-5 text-brand-600"></i>
+                                        <h3 class="font-bold text-slate-800">Program Management</h3>
+                                    </div>
+                                    <span id="icon-acc-4" class="text-slate-400 text-2xl font-light leading-none transition-transform duration-300">+</span>
+                                </button>
+                                <div id="acc-4" class="hidden p-5 pt-0 bg-slate-50 border-t border-slate-100 text-slate-600 text-sm leading-relaxed">
+                                    <div class="mt-3">
+                                        Cross-functional Program Leadership, SOP Readiness, Timeline Adherence, Stakeholder Management, Risk Mitigation.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="bg-slate-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-2xl font-serif font-bold mb-8">Education</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                    <h3 class="font-bold text-lg text-teal-400">MBA in Operations</h3>
-                    <p class="text-slate-300">Dr. D.Y. Patil Institute of Management and Research</p>
-                    <p class="text-sm text-slate-500 mt-2">Dec 2021 - Aug 2023</p>
-                </div>
-                <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                    <h3 class="font-bold text-lg text-teal-400">Bachelor of Engineering (Mechanical)</h3>
-                    <p class="text-slate-300">Patil Institute of Engineering and Technology</p>
-                    <p class="text-sm text-slate-500 mt-2">July 2013 - July 2017</p>
-                </div>
-            </div>
-            
-            <div class="mt-16 pt-8 border-t border-slate-800 text-slate-500 text-sm">
-                <p>&copy; 2025 Mayur Murade. Generated Portfolio SPA.</p>
-            </div>
-        </div>
-    </section>
-    
-    <script>
-        // Global Data Variables
-        let skillsData = [90, 85, 95, 90, 75, 88];
-        let impactData = [75, 40, 30, 25, 18, 12];
-        let skillsChartInstance = null;
-        let impactChartInstance = null;
-        
-        // --- 1. Charts Initialization ---
-        document.addEventListener('DOMContentLoaded', () => {
-            initCharts();
-            // REMOVED: Start with toolbar hidden logic, as toolbar is removed
-        });
+        <!-- Experience Section -->
+        <section id="experience" class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-2">Professional Journey</h2>
+                    <p class="text-slate-500 text-lg">A timeline of increasing responsibility and impact.</p>
+                </div>
 
-        function initCharts() {
-            // Radar Chart for Skills
-            const ctxSkills = document.getElementById('skillsChart').getContext('2d');
-            skillsChartInstance = new Chart(ctxSkills, {
-                type: 'radar',
-                data: {
-                    labels: ['Planning & Sourcing', 'Data Analytics', 'Lean / Six Sigma', 'Program Mgmt', 'Automation', 'Supply Chain'],
-                    datasets: [{
-                        label: 'Proficiency Level',
-                        data: skillsData,
-                        fill: true,
-                        backgroundColor: 'rgba(20, 184, 166, 0.2)', // Teal-500
-                        borderColor: 'rgba(13, 148, 136, 1)', // Teal-600
-                        pointBackgroundColor: 'rgba(13, 148, 136, 1)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(13, 148, 136, 1)'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            angleLines: { color: '#E5E7EB' },
-                            grid: { color: '#E5E7EB' },
-                            pointLabels: {
-                                font: { size: 12, family: 'Inter' },
-                                color: '#4B5563'
-                            },
-                            suggestedMin: 50,
-                            suggestedMax: 100
-                        }
-                    },
-                    plugins: {
-                        legend: { display: false }
-                    }
-                }
-            });
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- Vertical Line -->
+                    <div class="timeline-line hidden md:block"></div>
 
-            // Bar Chart for Impact Metrics
-            const ctxImpact = document.getElementById('impactChart').getContext('2d');
-            impactChartInstance = new Chart(ctxImpact, {
-                type: 'bar',
-                data: {
-                    labels: ['Lot Size Reduction', 'Ergonomic Risk Red.', 'Storage Efficiency', 'Waste Reduction', 'Takt Time Red.', 'Throughput Inc.'],
-                    datasets: [{
-                        label: '% Improvement',
-                        data: impactData,
-                        backgroundColor: [
-                            'rgba(13, 148, 136, 0.8)',
-                            'rgba(13, 148, 136, 0.7)',
-                            'rgba(59, 130, 246, 0.7)',
-                            'rgba(59, 130, 246, 0.6)',
-                            'rgba(99, 102, 241, 0.6)',
-                            'rgba(99, 102, 241, 0.5)'
-                        ],
-                        borderWidth: 0,
-                        borderRadius: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    indexAxis: 'y',
-                    scales: {
-                        x: {
-                            beginAtZero: true,
-                            grid: { color: '#F3F4F6' },
-                            ticks: { callback: function(value) { return value + '%' } }
-                        },
-                        y: {
-                            grid: { display: false }
-                        }
-                    },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.parsed.x + '% Improvement';
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
+                    <div class="space-y-12">
+                        
+                        <!-- Timeline Item 1 -->
+                        <div class="flex flex-col md:flex-row items-center w-full group">
+                            <div class="w-full md:w-5/12 md:text-right mb-6 md:mb-0 md:pr-12 relative">
+                                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-brand-200 transition duration-300">
+                                    <span class="inline-block px-3 py-1 bg-brand-50 text-brand-700 text-xs font-bold rounded-full mb-2">June 2024 – Present</span>
+                                    <h3 class="font-bold text-xl text-slate-800">Assistant Manager</h3>
+                                    <h4 class="text-slate-500 font-medium mb-3">Ather Energy Limited</h4>
+                                    <div class="flex flex-wrap gap-2 md:justify-end">
+                                        <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Program Mgmt</span>
+                                        <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Logistics</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Dot -->
+                            <div class="z-10 flex items-center justify-center w-10 h-10 bg-brand-600 rounded-full ring-4 ring-white shadow-lg flex-shrink-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <i data-lucide="check" class="w-5 h-5 text-white"></i>
+                            </div>
 
-        // --- 2. Interaction Logic (Simplified/Completed) ---
-        function toggleAccordion(id) {
-            const element = document.getElementById(id);
-            const icon = element.parentElement.querySelector('span');
+                            <div class="w-full md:w-5/12 md:pl-12 mt-6 md:mt-0">
+                                <div class="bg-slate-50 p-6 rounded-2xl border-l-4 border-brand-500 shadow-sm">
+                                    <ul class="space-y-3 text-sm text-slate-700">
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0"></i>
+                                            <span><strong>Program Management:</strong> Oversaw end-to-end implementation of production line setup, ensuring SOP readiness.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0"></i>
+                                            <span><strong>Optimization:</strong> Achieved an 18% reduction in takt time for the Battery Assembly Line.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0"></i>
+                                            <span><strong>Digitalization:</strong> Designed Power BI dashboard for real-time cost monitoring.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
-            if (element.classList.contains('hidden')) {
-                // Close all other open accordions
-                document.querySelectorAll('.bg-gray-50[id^="acc-"]').forEach(acc => {
-                    if (acc.id !== id && !acc.classList.contains('hidden')) {
-                         acc.classList.add('hidden');
-                         acc.parentElement.querySelector('span').innerText = '+';
-                    }
-                });
-                
-                element.classList.remove('hidden');
-                icon.innerText = '−'; // Changed from '-' to '−' for a better look
-            } else {
-                element.classList.add('hidden');
-                icon.innerText = '+';
-            }
-        }
+                        <!-- Timeline Item 2 -->
+                        <div class="flex flex-col md:flex-row-reverse items-center w-full group">
+                            <div class="w-full md:w-5/12 md:text-left mb-6 md:mb-0 md:pl-12 relative">
+                                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-brand-200 transition duration-300">
+                                    <span class="inline-block px-3 py-1 bg-brand-50 text-brand-700 text-xs font-bold rounded-full mb-2">May 2021 – May 2024</span>
+                                    <h3 class="font-bold text-xl text-slate-800">Assistant Manager</h3>
+                                    <h4 class="text-slate-500 font-medium mb-3">Varroc Engineering Limited</h4>
+                                    <div class="flex flex-wrap gap-2 md:justify-start">
+                                        <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Strategic Sourcing</span>
+                                        <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Kaizen</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                             <!-- Dot -->
+                             <div class="z-10 flex items-center justify-center w-10 h-10 bg-white border-2 border-brand-600 rounded-full ring-4 ring-white shadow-lg flex-shrink-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <span class="text-brand-600 font-bold text-xs">2</span>
+                            </div>
 
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        
-        // REMOVED: All edit mode, saveChanges, and chart update functions, 
-        // as the page is now permanently non-editable.
-        
-    </script>
+                            <div class="w-full md:w-5/12 md:pr-12 mt-6 md:mt-0">
+                                <div class="bg-slate-50 p-6 rounded-2xl border-r-4 md:border-r-0 md:border-l-4 md:border-l-transparent md:border-r-brand-500 border-brand-500 shadow-sm text-right md:text-right">
+                                     <ul class="space-y-3 text-sm text-slate-700 text-left md:text-right" dir="auto">
+                                        <li class="flex items-start gap-2 md:flex-row-reverse">
+                                            <i data-lucide="chevron-left" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0 hidden md:block"></i>
+                                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0 md:hidden"></i>
+                                            <span><strong>Strategic Sourcing:</strong> Executed RFQ/PO processes achieving a 2 lakh INR cost reduction.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2 md:flex-row-reverse">
+                                            <i data-lucide="chevron-left" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0 hidden md:block"></i>
+                                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0 md:hidden"></i>
+                                            <span><strong>Improvement:</strong> Reduced waste by 25% and increased throughput by 12% using Lean tools.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2 md:flex-row-reverse">
+                                            <i data-lucide="chevron-left" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0 hidden md:block"></i>
+                                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0 md:hidden"></i>
+                                            <span><strong>Simulation:</strong> Estimated labor requirements via demand forecast simulation.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Item 3 -->
+                        <div class="flex flex-col md:flex-row items-center w-full group">
+                            <div class="w-full md:w-5/12 md:text-right mb-6 md:mb-0 md:pr-12 relative">
+                                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-brand-200 transition duration-300">
+                                    <span class="inline-block px-3 py-1 bg-brand-50 text-brand-700 text-xs font-bold rounded-full mb-2">Aug 2017 – May 2021</span>
+                                    <h3 class="font-bold text-xl text-slate-800">Senior Engineer</h3>
+                                    <h4 class="text-slate-500 font-medium mb-3">Denso Haryana Private Limited</h4>
+                                    <div class="flex flex-wrap gap-2 md:justify-end">
+                                        <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">JIT/Kanban</span>
+                                        <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">IoT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                             <!-- Dot -->
+                             <div class="z-10 flex items-center justify-center w-10 h-10 bg-white border-2 border-brand-600 rounded-full ring-4 ring-white shadow-lg flex-shrink-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <span class="text-brand-600 font-bold text-xs">1</span>
+                            </div>
+
+                            <div class="w-full md:w-5/12 md:pl-12 mt-6 md:mt-0">
+                                <div class="bg-slate-50 p-6 rounded-2xl border-l-4 border-brand-500 shadow-sm">
+                                    <ul class="space-y-3 text-sm text-slate-700">
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0"></i>
+                                            <span><strong>Inventory:</strong> Reduced lot sizes by 75% through Kanban, improving delivery.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0"></i>
+                                            <span><strong>IoT:</strong> Deployed Plant Control System with sensors for real-time data.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0"></i>
+                                            <span><strong>Ergonomics:</strong> Conducted REBA analysis reducing ergonomic risks by 40%.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Footer -->
+        <footer class="bg-slate-900 text-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl font-serif font-bold mb-2">Education</h2>
+                    <div class="w-12 h-0.5 bg-brand-500 mx-auto"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-brand-500 transition duration-300">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-slate-700 rounded-lg">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 text-brand-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-white">MBA in Operations</h3>
+                                <p class="text-slate-400 text-sm mb-2">Dr. D.Y. Patil Institute of Management and Research</p>
+                                <span class="inline-block px-2 py-1 bg-slate-700 rounded text-xs text-brand-300">Dec 2021 - Aug 2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-brand-500 transition duration-300">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-slate-700 rounded-lg">
+                                <i data-lucide="book-open" class="w-6 h-6 text-brand-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-white">B.E. Mechanical</h3>
+                                <p class="text-slate-400 text-sm mb-2">Patil Institute of Engineering and Technology</p>
+                                <span class="inline-block px-2 py-1 bg-slate-700 rounded text-xs text-brand-300">July 2013 - July 2017</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-20 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+                    <p>&copy; 2025 Mayur Murade. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="mailto:mayurmurade@gmail.com" class="hover:text-brand-400 transition">Contact</a>
+                        <a href="#" class="hover:text-brand-400 transition">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // 1. Accordion Logic
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            const icon = button.querySelector('span[id^="icon-"]');
+            
+            // Close other open accordions
+            document.querySelectorAll('[id^="acc-"]').forEach(acc => {
+                if (acc.id !== id && !acc.classList.contains('hidden')) {
+                    acc.classList.add('hidden');
+                    const otherIcon = acc.previousElementSibling.querySelector('span[id^="icon-"]');
+                    otherIcon.innerText = '+';
+                    otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Toggle current
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.innerText = '−';
+                icon.style.transform = 'rotate(180deg)';
+                // Optional: Add subtle animation class here if needed
+            } else {
+                content.classList.add('hidden');
+                icon.innerText = '+';
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // 2. Mobile Menu Logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // 3. Chart Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Common Chart Options
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: { family: 'Inter', size: 12 }
+                        }
+                    }
+                }
+            };
+
+            // Radar Chart (Skills)
+            const ctxSkills = document.getElementById('skillsChart').getContext('2d');
+            new Chart(ctxSkills, {
+                type: 'radar',
+                data: {
+                    labels: ['Planning', 'Analytics', 'Lean/SixSigma', 'Program Mgmt', 'Automation', 'Supply Chain'],
+                    datasets: [{
+                        label: 'Proficiency Level',
+                        data: [90, 85, 95, 90, 75, 88],
+                        fill: true,
+                        backgroundColor: 'rgba(20, 184, 166, 0.2)', // Brand-500 with opacity
+                        borderColor: '#0d9488', // Brand-600
+                        pointBackgroundColor: '#0d9488',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#0d9488'
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        r: {
+                            angleLines: { color: '#E2E8F0' },
+                            grid: { color: '#E2E8F0' },
+                            pointLabels: {
+                                font: { size: 11, family: 'Inter', weight: '600' },
+                                color: '#64748B'
+                            },
+                            suggestedMin: 40,
+                            suggestedMax: 100,
+                            ticks: { display: false } // Hide numbers on axis for cleaner look
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // Bar Chart (Impact)
+            const ctxImpact = document.getElementById('impactChart').getContext('2d');
+            new Chart(ctxImpact, {
+                type: 'bar',
+                data: {
+                    labels: ['Lot Size Red.', 'Ergonomic Risk', 'Storage Eff.', 'Waste Red.', 'Takt Time Red.', 'Throughput Inc.'],
+                    datasets: [{
+                        label: '% Improvement',
+                        data: [75, 40, 30, 25, 18, 12],
+                        backgroundColor: [
+                            'rgba(13, 148, 136, 0.85)',
+                            'rgba(13, 148, 136, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(59, 130, 246, 0.6)',
+                            'rgba(99, 102, 241, 0.6)',
+                            'rgba(99, 102, 241, 0.5)'
+                        ],
+                        borderRadius: 6,
+                        barThickness: 24
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: { color: '#F1F5F9' },
+                            ticks: { 
+                                callback: function(value) { return value + '%' },
+                                color: '#94A3B8'
+                            }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: {
+                                font: { family: 'Inter', weight: '500' },
+                                color: '#475569'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1E293B',
+                            padding: 12,
+                            titleFont: { family: 'Inter', size: 13 },
+                            bodyFont: { family: 'Inter', size: 12 },
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.x + '% Improvement';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
